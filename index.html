@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Расчет гипотенузы</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Расчет гипотенузы</h1>
+    <form action="/calculate" method="post">
+        <div>
+            <label for="sideA">Длина первого катета (a):</label>
+            <input type="number" id="sideA" name="sideA" step="any">
+        </div>
+        <div>
+            <label for="sideB">Длина второго катета (b):</label>
+            <input type="number" id="sideB" name="sideB" step="any">
+        </div>
+        <button type="submit">Рассчитать</button>
+    </form>
+</body>
+</html>
