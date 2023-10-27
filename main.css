@@ -1,34 +1,21 @@
 body {
-    text-align: center;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-h1 {
-    color: #333;
+.accordion-item {
+    border: 1px solid #a28f00;
+    margin: 4px;
 }
 
-div {
-    margin: 10px;
-}
-
-label {
-    font-weight: bold;
-}
-
-input {
-    padding: 5px;
-}
-
-button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
+.accordion-header {
+    background-color: #18e3fa;
+    padding: 10px;
     cursor: pointer;
 }
 
-#result {
-    font-size: 18px;
-    color: #007bff;
-    font-weight: bold;
+.accordion-content {
+    padding: 10px;
+    display: none;
 }
