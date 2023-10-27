@@ -1,26 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Аккордеон</title>
+    <title>Математические задачи</title>
 </head>
 <body>
-    <div class="accordion">
-        <div class="accordion-item">
-            <div class="accordion-header">Заголовок 1</div>
-            <div class="accordion-content">Содержимое 1</div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header">Заголовок 2</div>
-            <div class="accordion-content">Содержимое 2</div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header">Заголовок 3</div>
-            <div class="accordion-content">Содержимое 3</div>
-        </div>
+    <h1>Математические задачи</h1>
+
+    <button onclick="showQuadraticTask()">Квадратный трёхчлен</button>
+    <button onclick="showHypotenuseTask()">Расчет гипотенузы</button>
+    <button onclick="showPowerTask()">Вычисление степени</button>
+    <button onclick="showArithmeticProgressionTask()">Арифметическая прогрессия</button>
+    <button onclick="showGeometricProgressionTask()">Геометрическая прогрессия</button>
+    
+    <div id="quadraticTask" style="display: none;">
+        <h2>Квадратный трёхчлен</h2>
+        <p>Введите значения корней:</p>
+        <input type="text" id="root1" placeholder="Корень 1">
+        <input type="text" id="root2" placeholder="Корень 2">
+        <button onclick="calculateQuadratic()">Рассчитать</button>
+        <p>Результат:</p>
+        <p id="quadraticResult"></p>
     </div>
-    <script src="script.js"></script>
+
+    <div id="hypotenuseTask" style="display: none;">
+        <h2>Расчет гипотенузы</h2>
+        <p>Введите длины катетов:</p>
+        <input type="number" id="sideA" placeholder="Длина первого катета">
+        <input type="number" id="sideB" placeholder="Длина второго катета">
+        <button onclick="calculateHypotenuse()">Рассчитать</button>
+        <p>Результат:</p>
+        <p id="hypotenuseResult"></p>
+    </div>
+
+    <div id="powerTask" style="display: none;">
+        <h2>Вычисление степени</h2>
+        <p>Введите число (x):</p>
+        <input type="number" id="base" placeholder="x">
+        <p>Введите степень (n):</p>
+        <input type="number" id="exponent" placeholder="n">
+        <button onclick="calculatePower()">Вычислить</button>
+        <p>Результат:</p>
+        <p id="powerResult"></p>
+    </div>
+
+    <div id="progressionTask" style="display: none;">
+        <h2>Арифметическая прогрессия</h2>
+        <p>Введите первый член прогрессии (a):</p>
+        <input type="number" id="firstTerm" placeholder="a">
+        <p>Введите разность (d):</p>
+        <input type="number" id="commonDifference" placeholder="d">
+        <p>Введите номер члена прогрессии (n):</p>
+        <input type="number" id="termNumber" placeholder="n">
+        <button onclick="calculateArithmeticProgression()">Рассчитать</button>
+        <p>Результат:</p>
+        <p id="progressionResult"></p>
+    </div>
+    <div id="geometricProgressionTask" style="display: none;">
+        <h2>Геометрическая прогрессия</h2>
+        <p>Введите первый член прогрессии (a):</p>
+        <input type="number" id="firstTermGeo" placeholder="a">
+        <p>Введите знаменатель прогрессии (r):</p>
+        <input type="number" id="commonRatio" placeholder="r">
+        <p>Введите номер члена прогрессии (n):</p>
+        <input type="number" id="termNumberGeo" placeholder="n">
+        <button onclick="calculateGeometricProgression()">Рассчитать</button>
+        <p>Результат:</p>
+        <p id="geometricProgressionResult"></p>
+    </div>
+    <script>
+        function showQuadraticTask() {
+            document.getElementById("quadraticTask").style.display = "block";
+            document.getElementById("hypotenuseTask").style.display = "none";
+            document.getElementById("powerTask").style.display = "none";
+            document.getElementById("progressionTask").style.display = "none";
+            document.getElementById("geometricProgressionTask").style.display = "none";
+        }
+
+        function showHypotenuseTask() {
+            document.getElementById("quadraticTask").style.display = "none";
+            document.getElementById("hypotenuseTask").style.display = "block";
+            document.getElementById("powerTask").style.display = "none";
+            document.getElementById("progressionTask").style.display = "none";
+            document.getElementById("geometricProgressionTask").style.display = "none";
+        }
+
+        function showPowerTask() {
+            document.getElementById("quadraticTask").style.display = "none";
+            document.getElementById("hypotenuseTask").style.display = "none";
+            document.getElementById("powerTask").style.display = "block";
+            document.getElementById("progressionTask").style.display = "none";
+            document.getElementById("geometricProgressionTask").style.display = "none";
+        }
+
+        function showArithmeticProgressionTask() {
+            document.getElementById("quadraticTask").style.display = "none";
+            document.getElementById("hypotenuseTask").style.display = "none";
+            document.getElementById("powerTask").style.display = "none";
+            document.getElementById("progressionTask").style.display = "block";
+            document.getElementById("geometricProgressionTask").style.display = "none";
+        }
+        function showGeometricProgressionTask() {
+            document.getElementById("quadraticTask").style.display = "none";
+            document.getElementById("hypotenuseTask").style.display = "none";
+            document.getElementById("powerTask").style.display = "none";
+            document.getElementById("progressionTask").style.display = "none";
+            document.getElementById("geometricProgressionTask").style.display = "block";
+        }
+
+        function calculateQuadratic() {
+            var root1 = parseFloat(document.getElementById("root1").value);
+            var root2 = parseFloat(document.getElementById("root2").value);
+        
+            if (!isNaN(root1) && !isNaN(root2)) {
+                var result = root1 * root2;
+        
+                document.getElementById("quadraticResult").textContent = "Результат: " + result;
+            } else {
+                document.getElementById("quadraticResult").textContent = "Пожалуйста, введите числовые значения для корней.";
+            }
+        }
+        
+        function calculateHypotenuse() {
+            var sideA = parseFloat(document.getElementById("sideA").value);
+            var sideB = parseFloat(document.getElementById("sideB").value);
+        
+            if (!isNaN(sideA) && !isNaN(sideB)) {
+                var result = Math.sqrt(Math.pow(sideA, 2) + Math.pow(sideB, 2));
+        
+                document.getElementById("hypotenuseResult").textContent = "Результат: " + result;
+            } else {
+                document.getElementById("hypotenuseResult").textContent = "Пожалуйста, введите числовые значения для катетов.";
+            }
+        }
+        
+        function calculatePower() {
+            var base = parseFloat(document.getElementById("base").value);
+            var exponent = parseInt(document.getElementById("exponent").value);
+        
+            if (!isNaN(base) && !isNaN(exponent)) {
+                var result = Math.pow(base, exponent);
+        
+                document.getElementById("powerResult").textContent = "Результат: " + result;
+            } else {
+                document.getElementById("powerResult").textContent = "Пожалуйста, введите числовые значения для числа (x) и степени (n).";
+            }
+        }
+        
+        function calculateArithmeticProgression() {
+            var firstTerm = parseFloat(document.getElementById("firstTerm").value);
+            var commonDifference = parseFloat(document.getElementById("commonDifference").value);
+            var termNumber = parseInt(document.getElementById("termNumber").value);
+            
+            if (!isNaN(firstTerm) && !isNaN(commonDifference) && !isNaN(termNumber) && termNumber > 0) {
+                var result = firstTerm + (termNumber - 1) * commonDifference;
+                document.getElementById("progressionResult").textContent = "Результат: " + result;
+            } else {
+                document.getElementById("progressionResult").textContent = "Пожалуйста, введите корректные значения для первого члена (a), разности (d) и номера члена (n).";
+            }
+        }
+        
+        
+        function calculateGeometricProgression() {
+            var firstTermGeo = parseFloat(document.getElementById("firstTermGeo").value);
+            var commonRatio = parseFloat(document.getElementById("commonRatio").value);
+            var termNumberGeo = parseInt(document.getElementById("termNumberGeo").value);
+            
+            if (!isNaN(firstTermGeo) && !isNaN(commonRatio) && !isNaN(termNumberGeo) && termNumberGeo > 0) {
+                var result = firstTermGeo * Math.pow(commonRatio, termNumberGeo - 1);
+                document.getElementById("geometricProgressionResult").textContent = "Результат: " + result;
+            } else {
+                document.getElementById("geometricProgressionResult").textContent = "Пожалуйста, введите корректные значения для первого члена (a), знаменателя (r) и номера члена (n).";
+            }
+        }
+    </script>
 </body>
 </html>
