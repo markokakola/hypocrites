@@ -11,7 +11,11 @@
     <button onclick="showPowerTask()">Вычисление степени</button>
     <button onclick="showArithmeticProgressionTask()">Арифметическая прогрессия</button>
     <button onclick="showGeometricProgressionTask()">Геометрическая прогрессия</button>
-    <button onclick="showFactorialTask()">Факториал</button>
+    <button onclick="showCombinatoricsTask()">Комбинаторика</button>
+    <button onclick="showPermutationTask()">Перестановка</button>
+    <button onclick="showArrangementTask()">Размещение</button>
+    <button onclick="showCombinationTask()">Сочетание</button>
+    <button onclick="showRelativeFrequencyTask()">Относительная частота</button>
     
     <div id="quadraticTask" style="display: none;">
         <h2>Квадратный трёхчлен</h2>
@@ -19,7 +23,6 @@
         <input type="text" id="root1" placeholder="Корень 1">
         <input type="text" id="root2" placeholder="Корень 2">
         <button onclick="calculateQuadratic()">Рассчитать</button>
-        <p>Результат:</p>
         <p id="quadraticResult"></p>
     </div>
 
@@ -29,7 +32,6 @@
         <input type="number" id="sideA" placeholder="Длина первого катета">
         <input type="number" id="sideB" placeholder="Длина второго катета">
         <button onclick="calculateHypotenuse()">Рассчитать</button>
-        <p>Результат:</p>
         <p id="hypotenuseResult"></p>
     </div>
 
@@ -40,7 +42,6 @@
         <p>Введите степень (n):</p>
         <input type="number" id="exponent" placeholder="n">
         <button onclick="calculatePower()">Вычислить</button>
-        <p>Результат:</p>
         <p id="powerResult"></p>
     </div>
 
@@ -53,9 +54,9 @@
         <p>Введите номер члена прогрессии (n):</p>
         <input type="number" id="termNumber" placeholder="n">
         <button onclick="calculateArithmeticProgression()">Рассчитать</button>
-        <p>Результат:</p>
         <p id="progressionResult"></p>
     </div>
+
     <div id="geometricProgressionTask" style="display: none;">
         <h2>Геометрическая прогрессия</h2>
         <p>Введите первый член прогрессии (a):</p>
@@ -65,19 +66,56 @@
         <p>Введите номер члена прогрессии (n):</p>
         <input type="number" id="termNumberGeo" placeholder="n">
         <button onclick="calculateGeometricProgression()">Рассчитать</button>
-        <p>Результат:</p>
         <p id="geometricProgressionResult"></p>
     </div>
 
-    <div id="factorialTask" style="display: none;">
-        <h2>Факториал</h2>
-        <p>Введите число (n):</p>
-        <input type="number" id="factorialNumber" placeholder="n">
-        <button onclick="calculateFactorial()">Вычислить</button>
-        <p>Результат:</p>
-        <p id="factorialResult"></p>
+    <div id="combinatoricsTask" style="display: none;">
+        <h2>Комбинаторика</h2>
+        <p>Введите количество объектов (n):</p>
+        <input type="number" id="objectsCount" placeholder="n">
+        <p>Введите количество выборок (k):</p>
+        <input type="number" id="sampleSize" placeholder="k">
+        <button onclick="calculateCombinatorics()">Рассчитать</button>
+        <p id="combinatoricsResult"></p>
     </div>
 
+    <div id="permutationTask" style="display: none;">
+        <h2>Перестановка</h2>
+        <p>Введите количество элементов (n):</p>
+        <input type="number" id="elementsCount" placeholder="n">
+        <button onclick="calculatePermutation()">Рассчитать</button>
+        <p id="permutationResult"></p>
+    </div>
+
+    <div id="arrangementTask" style="display: none;">
+        <h2>Размещение</h2>
+        <p>Введите количество элементов (n):</p>
+        <input type="number" id="arrangementElementsCount" placeholder="n">
+        <p>Введите количество выбора (k):</p>
+        <input type="number" id="arrangementSelectionCount" placeholder="k">
+        <button onclick="calculateArrangement()">Рассчитать</button>
+        <p id="arrangementResult"></p>
+    </div>
+
+    <div id="combinationTask" style="display: none;">
+        <h2>Сочетание</h2>
+        <p>Введите количество элементов (n):</p>
+        <input type="number" id="combinationElementsCount" placeholder="n">
+        <p>Введите количество выбора (k):</p>
+        <input type="number" id="combinationSelectionCount" placeholder="k">
+        <button onclick="calculateCombination()">Рассчитать</button>
+        <p id="combinationResult"></p>
+    </div>
+
+    <div id="relativeFrequencyTask" style="display: none;">
+        <h2>Относительная частота</h2>
+        <p>Введите число испытаний, в которых событие наступило (k):</p>
+        <input type="number" id="eventOccurredCount" placeholder="k">
+        <p>Введите общее число испытаний (n):</p>
+        <input type="number" id="totalTrialsCount" placeholder="n">
+        <button onclick="calculateRelativeFrequency()">Рассчитать</button>
+        <p id="relativeFrequencyResult"></p>
+    </div>
     <script>
         function showQuadraticTask() {
             document.getElementById("quadraticTask").style.display = "block";
@@ -85,6 +123,11 @@
             document.getElementById("powerTask").style.display = "none";
             document.getElementById("progressionTask").style.display = "none";
             document.getElementById("geometricProgressionTask").style.display = "none";
+            document.getElementById("combinatoricsTask").style.display = "none";
+            document.getElementById("permutationTask").style.display = "none";
+            document.getElementById("arrangementTask").style.display = "none";
+            document.getElementById("combinationTask").style.display = "none";
+            document.getElementById("relativeFrequencyTask").style.display = "none";
         }
 
         function showHypotenuseTask() {
@@ -93,6 +136,11 @@
             document.getElementById("powerTask").style.display = "none";
             document.getElementById("progressionTask").style.display = "none";
             document.getElementById("geometricProgressionTask").style.display = "none";
+            document.getElementById("combinatoricsTask").style.display = "none";
+            document.getElementById("permutationTask").style.display = "none";
+            document.getElementById("arrangementTask").style.display = "none";
+            document.getElementById("combinationTask").style.display = "none";
+            document.getElementById("relativeFrequencyTask").style.display = "none";
         }
 
         function showPowerTask() {
@@ -101,6 +149,11 @@
             document.getElementById("powerTask").style.display = "block";
             document.getElementById("progressionTask").style.display = "none";
             document.getElementById("geometricProgressionTask").style.display = "none";
+            document.getElementById("combinatoricsTask").style.display = "none";
+            document.getElementById("permutationTask").style.display = "none";
+            document.getElementById("arrangementTask").style.display = "none";
+            document.getElementById("combinationTask").style.display = "none";
+            document.getElementById("relativeFrequencyTask").style.display = "none";
         }
 
         function showArithmeticProgressionTask() {
@@ -109,6 +162,11 @@
             document.getElementById("powerTask").style.display = "none";
             document.getElementById("progressionTask").style.display = "block";
             document.getElementById("geometricProgressionTask").style.display = "none";
+            document.getElementById("combinatoricsTask").style.display = "none";
+            document.getElementById("permutationTask").style.display = "none";
+            document.getElementById("arrangementTask").style.display = "none";
+            document.getElementById("combinationTask").style.display = "none";
+            document.getElementById("relativeFrequencyTask").style.display = "none";
         }
         function showGeometricProgressionTask() {
             document.getElementById("quadraticTask").style.display = "none";
@@ -116,15 +174,74 @@
             document.getElementById("powerTask").style.display = "none";
             document.getElementById("progressionTask").style.display = "none";
             document.getElementById("geometricProgressionTask").style.display = "block";
+            document.getElementById("combinatoricsTask").style.display = "none";
+            document.getElementById("permutationTask").style.display = "none";
+            document.getElementById("arrangementTask").style.display = "none";
+            document.getElementById("combinationTask").style.display = "none";
+            document.getElementById("relativeFrequencyTask").style.display = "none";
         }
-        function showFactorialTask() {
+        function showCombinatoricsTask() {
             document.getElementById("quadraticTask").style.display = "none";
             document.getElementById("hypotenuseTask").style.display = "none";
             document.getElementById("powerTask").style.display = "none";
             document.getElementById("progressionTask").style.display = "none";
             document.getElementById("geometricProgressionTask").style.display = "none";
-            document.getElementById("factorialTask").style.display = "block";
+            document.getElementById("combinatoricsTask").style.display = "block";
+            document.getElementById("permutationTask").style.display = "none";
+            document.getElementById("arrangementTask").style.display = "none";
+            document.getElementById("combinationTask").style.display = "none";
+            document.getElementById("relativeFrequencyTask").style.display = "none";
         }
+        function showPermutationTask() {
+            document.getElementById("quadraticTask").style.display = "none";
+            document.getElementById("hypotenuseTask").style.display = "none";
+            document.getElementById("powerTask").style.display = "none";
+            document.getElementById("progressionTask").style.display = "none";
+            document.getElementById("geometricProgressionTask").style.display = "none";
+            document.getElementById("combinatoricsTask").style.display = "none";
+            document.getElementById("permutationTask").style.display = "block";
+            document.getElementById("arrangementTask").style.display = "none";
+            document.getElementById("combinationTask").style.display = "none";
+            document.getElementById("relativeFrequencyTask").style.display = "none";
+        }
+        function showArrangementTask() {
+            document.getElementById("quadraticTask").style.display = "none";
+            document.getElementById("hypotenuseTask").style.display = "none";
+            document.getElementById("powerTask").style.display = "none";
+            document.getElementById("progressionTask").style.display = "none";
+            document.getElementById("geometricProgressionTask").style.display = "none";
+            document.getElementById("combinatoricsTask").style.display = "none";
+            document.getElementById("permutationTask").style.display = "none";
+            document.getElementById("arrangementTask").style.display = "block";
+            document.getElementById("combinationTask").style.display = "none";
+            document.getElementById("relativeFrequencyTask").style.display = "none";
+        }
+        function showCombinationTask() {
+            document.getElementById("quadraticTask").style.display = "none";
+            document.getElementById("hypotenuseTask").style.display = "none";
+            document.getElementById("powerTask").style.display = "none";
+            document.getElementById("progressionTask").style.display = "none";
+            document.getElementById("geometricProgressionTask").style.display = "none";
+            document.getElementById("combinatoricsTask").style.display = "none";
+            document.getElementById("permutationTask").style.display = "none";
+            document.getElementById("arrangementTask").style.display = "none";
+            document.getElementById("combinationTask").style.display = "block";
+            document.getElementById("relativeFrequencyTask").style.display = "none";
+        }
+
+        function showRelativeFrequencyTask() {
+            document.getElementById("quadraticTask").style.display = "none";
+            document.getElementById("hypotenuseTask").style.display = "none";
+            document.getElementById("powerTask").style.display = "none";
+            document.getElementById("progressionTask").style.display = "none";
+            document.getElementById("geometricProgressionTask").style.display = "none";
+            document.getElementById("combinatoricsTask").style.display = "none";
+            document.getElementById("permutationTask").style.display = "none";
+            document.getElementById("arrangementTask").style.display = "none";
+            document.getElementById("combinationTask").style.display = "none";
+            document.getElementById("relativeFrequencyTask").style.display = "block";
+        }
+
         function calculateQuadratic() {
             var root1 = parseFloat(document.getElementById("root1").value);
             var root2 = parseFloat(document.getElementById("root2").value);
@@ -190,31 +307,95 @@
                 document.getElementById("geometricProgressionResult").textContent = "Пожалуйста, введите корректные значения для первого члена (a), знаменателя (r) и номера члена (n).";
             }
         }
-        function showFactorialTask() {
-            document.getElementById("quadraticTask").style.display = "none";
-            document.getElementById("hypotenuseTask").style.display = "none";
-            document.getElementById("powerTask").style.display = "none";
-            document.getElementById("progressionTask").style.display = "none";
-            document.getElementById("geometricProgressionTask").style.display = "none";
-            document.getElementById("factorialTask").style.display = "block";
-        }
 
-        function calculateFactorial() {
-            var n = parseInt(document.getElementById("factorialNumber").value);
-        
-            if (!isNaN(n) && n >= 0) {
-                var result = factorial(n);
-                document.getElementById("factorialResult").textContent = "Результат: " + result;
+        function calculateCombinatorics() {
+            var objectsCount = parseInt(document.getElementById("objectsCount").value);
+            var sampleSize = parseInt(document.getElementById("sampleSize").value);
+            
+            if (!isNaN(objectsCount) && !isNaN(sampleSize) && objectsCount >= sampleSize && objectsCount > 0 && sampleSize > 0) {
+                var result = factorial(objectsCount) / (factorial(sampleSize) * factorial(objectsCount - sampleSize));
+                document.getElementById("combinatoricsResult").textContent = "Результат: " + result;
             } else {
-                document.getElementById("factorialResult").textContent = "Пожалуйста, введите корректное неотрицательное значение для n.";
+                document.getElementById("combinatoricsResult").textContent = "Пожалуйста, введите корректные значения для n и k (n >= k > 0).";
             }
         }
 
         function factorial(n) {
-            if (n === 0) {
+            if (n === 0 || n === 1) {
                 return 1;
             } else {
                 return n * factorial(n - 1);
+            }
+        }
+
+        function calculatePermutation() {
+            var elementsCount = parseInt(document.getElementById("elementsCount").value);
+            
+            if (!isNaN(elementsCount) && elementsCount > 0) {
+                var result = factorial(elementsCount);
+                document.getElementById("permutationResult").textContent = "Результат: " + result;
+            } else {
+                document.getElementById("permutationResult").textContent = "Пожалуйста, введите корректное значение для n (n > 0).";
+            }
+        }
+
+        function factorial(n) {
+            if (n === 0 || n === 1) {
+                return 1;
+            } else {
+                return n * factorial(n - 1);
+            }
+        }
+
+        function calculateArrangement() {
+            var n = parseInt(document.getElementById("arrangementElementsCount").value);
+            var k = parseInt(document.getElementById("arrangementSelectionCount").value);
+            
+            if (!isNaN(n) && !isNaN(k) && n >= k && n > 0 && k > 0) {
+                var result = factorial(n) / factorial(n - k);
+                document.getElementById("arrangementResult").textContent = "Результат: " + result;
+            } else {
+                document.getElementById("arrangementResult").textContent = "Пожалуйста, введите корректные значения для n и k (n >= k > 0).";
+            }
+        }
+
+        function factorial(n) {
+            if (n === 0 || n === 1) {
+                return 1;
+            } else {
+                return n * factorial(n - 1);
+            }
+        }
+
+        function calculateCombination() {
+            var n = parseInt(document.getElementById("combinationElementsCount").value);
+            var k = parseInt(document.getElementById("combinationSelectionCount").value);
+            
+            if (!isNaN(n) && !isNaN(k) && n >= k && n > 0 && k > 0) {
+                var result = factorial(n) / (factorial(k) * factorial(n - k));
+                document.getElementById("combinationResult").textContent = "Результат: " + result;
+            } else {
+                document.getElementById("combinationResult").textContent = "Пожалуйста, введите корректные значения для n и k (n >= k > 0).";
+            }
+        }
+
+        function factorial(n) {
+            if (n === 0 || n === 1) {
+                return 1;
+            } else {
+                return n * factorial(n - 1);
+            }
+        }
+
+        function calculateRelativeFrequency() {
+            var k = parseInt(document.getElementById("eventOccurredCount").value);
+            var n = parseInt(document.getElementById("totalTrialsCount").value);
+            
+            if (!isNaN(k) && !isNaN(n) && k >= 0 && n > 0) {
+                var result = k / n;
+                document.getElementById("relativeFrequencyResult").textContent = "Результат: " + result.toFixed(2); 
+            } else {
+                document.getElementById("relativeFrequencyResult").textContent = "Пожалуйста, введите корректные значения для k и n (k >= 0, n > 0).";
             }
         }
     </script>
