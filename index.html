@@ -1,7 +1,18 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Математические задачи</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Accordion - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion();
+  } );
+  </script>
 </head>
 <body>
     <h1>Математические задачи</h1>
@@ -12,9 +23,10 @@
     <button onclick="showArrangementTask()">Размещение</button>
     <button onclick="showCombinationTask()">Сочетание</button>
     <button onclick="showRelativeFrequencyTask()">Относительная частота</button>
-
-    <div id="quadraticTask" style="display: none;">
-        <h2>Квадратный трёхчлен</h2>
+<div id="accordion">
+  <h3>Квадратный трёхчлен</h3>
+  <div>
+    <p>
         <p>Найдите корни квадратного трехчлена: \(ax^2 + bx - c = 0\).</p>
         <p>Введите значение для \(a\):</p>
         <input type="number" id="quadraticA" placeholder="a">
@@ -24,10 +36,11 @@
         <input type="number" id="quadraticC" placeholder="c">
         <button onclick="solveQuadratic()">Решить</button>
         <p id="quadraticResult"></p>
-    </div>
-
-    <div id="cubicEquationTask" style="display: none;">
-        <h2>Уравнение с одной переменной</h2>
+    </p>
+  </div>
+  <h3>Уравнение с одной переменной</h3>
+  <div>
+    <p>
         <p>Решите уравнение: \(ax^3 - bx = 0\)</p>
         <p>Введите значение для \(a\):</p>
         <input type="number" id="cubicA" placeholder="a">
@@ -35,19 +48,22 @@
         <input type="number" id="cubicB" placeholder="b">
         <button onclick="solveCubicEquation()">Решить</button>
         <p id="cubicResult"></p>
-    </div>
-
-    <div id="permutationTask" style="display: none;">
-        <h2>Перестановка</h2>
+    </p>
+  </div>
+  <h3>Перестановка</h3>
+  <div>
+    <p>
         <p>Сколькими способами (n) человека могут разместиться на (k)-местной скамейке?</p>
         <p>Введите количество элементов (n):</p>
         <input type="number" id="elementsCount" placeholder="n">
         <button onclick="calculatePermutation()">Рассчитать</button>
         <p id="permutationResult"></p>
-    </div>
+    </p>
 
-    <div id="arrangementTask" style="display: none;">
-        <h2>Размещение</h2>
+  </div>
+  <h3>Размещение</h3>
+  <div>
+    <p>
         <p>Сколькими способами может разместиться семья из (n) элементов в (k)-местном купе, если других пассажиров в купе нет?</p>
         <p>Введите количество элементов (n):</p>
         <input type="number" id="arrangementElementsCount" placeholder="n">
@@ -55,187 +71,170 @@
         <input type="number" id="arrangementSelectionCount" placeholder="k">
         <button onclick="calculateArrangement()">Рассчитать</button>
         <p id="arrangementResult"></p>
-    </div>
+    </p>
 
-    <div id="combinationTask" style="display: none;">
-        <h2>Сочетание</h2>
-        <p>В магазине продаётся (n) различных элементов. Сколькими способами можно выбрать из них (k) элементов?</p>
-        <p>Введите количество элементов (n):</p>
-        <input type="number" id="combinationElementsCount" placeholder="n">
-        <p>Введите количество элементов (k):</p>
-        <input type="number" id="combinationSelectionCount" placeholder="k">
-        <button onclick="calculateCombination()">Рассчитать</button>
-        <p id="combinationResult"></p>
-    </div>
-
-    <div id="relativeFrequencyTask" style="display: none;">
-        <h2>Относительная частота</h2>
-        <p>В 2006 г. в городе Дмитрове в июле и августе было (n) солнечных дней. Какова относительная частота солнечных дней в указанные (k) дней?</p>
-        <p>Введите число испытаний, в которых событие наступило (k):</p>
-        <input type="number" id="eventOccurredCount" placeholder="k">
-        <p>Введите общее число испытаний (n):</p>
-        <input type="number" id="totalTrialsCount" placeholder="n">
-        <button onclick="calculateRelativeFrequency()">Рассчитать</button>
-        <p id="relativeFrequencyResult"></p>
-    </div>
-    <script>
-        function showQuadraticTask() {
-            document.getElementById("quadraticTask").style.display = "block";
-            document.getElementById("relativeFrequencyTask").style.display = "none";
-            document.getElementById("combinationTask").style.display = "none";
-            document.getElementById("arrangementTask").style.display = "none";
-            document.getElementById("permutationTask").style.display = "none";
-            document.getElementById("cubicEquationTask").style.display = "none";
-        }
-        function showCubicEquationTask() {
-            document.getElementById("cubicEquationTask").style.display = "block";
-            document.getElementById("relativeFrequencyTask").style.display = "none";
-            document.getElementById("combinationTask").style.display = "none";
-            document.getElementById("arrangementTask").style.display = "none";
-            document.getElementById("permutationTask").style.display = "none";
-            document.getElementById("quadraticTask").style.display = "none";
-        }
-        function showPermutationTask() {
-            document.getElementById("permutationTask").style.display = "block";
-            document.getElementById("relativeFrequencyTask").style.display = "none";
-            document.getElementById("combinationTask").style.display = "none";
-            document.getElementById("arrangementTask").style.display = "none";
-            document.getElementById("cubicEquationTask").style.display = "none";
-            document.getElementById("quadraticTask").style.display = "none";
-        }
-        function showArrangementTask() {
-            document.getElementById("arrangementTask").style.display = "block";
-            document.getElementById("relativeFrequencyTask").style.display = "none";
-            document.getElementById("combinationTask").style.display = "none";
-            document.getElementById("permutationTask").style.display = "none";
-            document.getElementById("cubicEquationTask").style.display = "none";
-            document.getElementById("quadraticTask").style.display = "none";
-        }
-        function showCombinationTask() {
-            document.getElementById("combinationTask").style.display = "block";
-            document.getElementById("relativeFrequencyTask").style.display = "none";
-            document.getElementById("arrangementTask").style.display = "none";
-            document.getElementById("permutationTask").style.display = "none";
-            document.getElementById("cubicEquationTask").style.display = "none";
-            document.getElementById("quadraticTask").style.display = "none";
-        }
-        function showRelativeFrequencyTask() {
-            document.getElementById("relativeFrequencyTask").style.display = "block";
-            document.getElementById("combinationTask").style.display = "none";
-            document.getElementById("arrangementTask").style.display = "none";
-            document.getElementById("permutationTask").style.display = "none";
-            document.getElementById("cubicEquationTask").style.display = "none";
-            document.getElementById("quadraticTask").style.display = "none";
-        }
-        function solveQuadratic() {
-            var a = parseFloat(document.getElementById("quadraticA").value);
-            var b = parseFloat(document.getElementById("quadraticB").value);
-            var c = parseFloat(document.getElementById("quadraticC").value);
-        
-            if (!isNaN(a) && !isNaN(b) && !isNaN(c)) {
-                var discriminant = b * b - 4 * a * (-c);
-        
-                if (discriminant > 0) {
-                    var root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
-                    var root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
-                    document.getElementById("quadraticResult").textContent = "Решения: x1 = " + root1 + ", x2 = " + root2;
-                } else if (discriminant == 0) {
-                    var root = -b / (2 * a);
-                    document.getElementById("quadraticResult").textContent = "Единственное решение: x = " + root;
-                } else {
-                    document.getElementById("quadraticResult").textContent = "Уравнение не имеет действительных корней.";
-                }
-            } else {
-                document.getElementById("quadraticResult").textContent = "Пожалуйста, введите корректные значения для a, b и c.";
-            }
-        }
-
-        function solveCubicEquation() {
-            var a = parseFloat(document.getElementById("cubicA").value);
-            var b = parseFloat(document.getElementById("cubicB").value);
+  </div>
+</div>
+<script>
+    function showQuadraticTask() {
+        document.getElementById("quadraticTask").style.display = "block";
+        document.getElementById("relativeFrequencyTask").style.display = "none";
+        document.getElementById("combinationTask").style.display = "none";
+        document.getElementById("arrangementTask").style.display = "none";
+        document.getElementById("permutationTask").style.display = "none";
+        document.getElementById("cubicEquationTask").style.display = "none";
+    }
+    function showCubicEquationTask() {
+        document.getElementById("cubicEquationTask").style.display = "block";
+        document.getElementById("relativeFrequencyTask").style.display = "none";
+        document.getElementById("combinationTask").style.display = "none";
+        document.getElementById("arrangementTask").style.display = "none";
+        document.getElementById("permutationTask").style.display = "none";
+        document.getElementById("quadraticTask").style.display = "none";
+    }
+    function showPermutationTask() {
+        document.getElementById("permutationTask").style.display = "block";
+        document.getElementById("relativeFrequencyTask").style.display = "none";
+        document.getElementById("combinationTask").style.display = "none";
+        document.getElementById("arrangementTask").style.display = "none";
+        document.getElementById("cubicEquationTask").style.display = "none";
+        document.getElementById("quadraticTask").style.display = "none";
+    }
+    function showArrangementTask() {
+        document.getElementById("arrangementTask").style.display = "block";
+        document.getElementById("relativeFrequencyTask").style.display = "none";
+        document.getElementById("combinationTask").style.display = "none";
+        document.getElementById("permutationTask").style.display = "none";
+        document.getElementById("cubicEquationTask").style.display = "none";
+        document.getElementById("quadraticTask").style.display = "none";
+    }
+    function showCombinationTask() {
+        document.getElementById("combinationTask").style.display = "block";
+        document.getElementById("relativeFrequencyTask").style.display = "none";
+        document.getElementById("arrangementTask").style.display = "none";
+        document.getElementById("permutationTask").style.display = "none";
+        document.getElementById("cubicEquationTask").style.display = "none";
+        document.getElementById("quadraticTask").style.display = "none";
+    }
+    function showRelativeFrequencyTask() {
+        document.getElementById("relativeFrequencyTask").style.display = "block";
+        document.getElementById("combinationTask").style.display = "none";
+        document.getElementById("arrangementTask").style.display = "none";
+        document.getElementById("permutationTask").style.display = "none";
+        document.getElementById("cubicEquationTask").style.display = "none";
+        document.getElementById("quadraticTask").style.display = "none";
+    }
+    function solveQuadratic() {
+        var a = parseFloat(document.getElementById("quadraticA").value);
+        var b = parseFloat(document.getElementById("quadraticB").value);
+        var c = parseFloat(document.getElementById("quadraticC").value);
     
-            if (!isNaN(a) && !isNaN(b)) {
-                if (a !== 0) {
-                    var x = b / a;
-                    document.getElementById("cubicResult").textContent = "Решение: x = -√" + x;
-                } else {
-                    document.getElementById("cubicResult").textContent = "Уравнение не существует (деление на ноль).";
-                }
+        if (!isNaN(a) && !isNaN(b) && !isNaN(c)) {
+            var discriminant = b * b - 4 * a * (-c);
+    
+            if (discriminant > 0) {
+                var root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                var root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                document.getElementById("quadraticResult").textContent = "Решения: x1 = " + root1 + ", x2 = " + root2;
+            } else if (discriminant == 0) {
+                var root = -b / (2 * a);
+                document.getElementById("quadraticResult").textContent = "Единственное решение: x = " + root;
             } else {
-                document.getElementById("cubicResult").textContent = "Пожалуйста, введите корректные значения для a и b.";
+                document.getElementById("quadraticResult").textContent = "Уравнение не имеет действительных корней.";
             }
+        } else {
+            document.getElementById("quadraticResult").textContent = "Пожалуйста, введите корректные значения для a, b и c.";
         }
+    }
 
-        function calculatePermutation() {
-            var elementsCount = parseInt(document.getElementById("elementsCount").value);
-            
-            if (!isNaN(elementsCount) && elementsCount > 0) {
-                var result = factorial(elementsCount);
-                document.getElementById("permutationResult").textContent = "Результат: " + result;
-            } else {
-                document.getElementById("permutationResult").textContent = "Пожалуйста, введите корректное значение для n (n > 0).";
-            }
-        }
+    function solveCubicEquation() {
+        var a = parseFloat(document.getElementById("cubicA").value);
+        var b = parseFloat(document.getElementById("cubicB").value);
 
-        function factorial(n) {
-            if (n === 0 || n === 1) {
-                return 1;
+        if (!isNaN(a) && !isNaN(b)) {
+            if (a !== 0) {
+                var x = b / a;
+                document.getElementById("cubicResult").textContent = "Решение: x = -√" + x;
             } else {
-                return n * factorial(n - 1);
+                document.getElementById("cubicResult").textContent = "Уравнение не существует (деление на ноль).";
             }
+        } else {
+            document.getElementById("cubicResult").textContent = "Пожалуйста, введите корректные значения для a и b.";
         }
+    }
 
-        function calculateArrangement() {
-            var n = parseInt(document.getElementById("arrangementElementsCount").value);
-            var k = parseInt(document.getElementById("arrangementSelectionCount").value);
-            
-            if (!isNaN(n) && !isNaN(k) && n >= k && n > 0 && k > 0) {
-                var result = factorial(n) / factorial(n - k);
-                document.getElementById("arrangementResult").textContent = "Результат: " + result;
-            } else {
-                document.getElementById("arrangementResult").textContent = "Пожалуйста, введите корректные значения для n и k (n >= k > 0).";
-            }
+    function calculatePermutation() {
+        var elementsCount = parseInt(document.getElementById("elementsCount").value);
+        
+        if (!isNaN(elementsCount) && elementsCount > 0) {
+            var result = factorial(elementsCount);
+            document.getElementById("permutationResult").textContent = "Результат: " + result;
+        } else {
+            document.getElementById("permutationResult").textContent = "Пожалуйста, введите корректное значение для n (n > 0).";
         }
+    }
 
-        function factorial(n) {
-            if (n === 0 || n === 1) {
-                return 1;
-            } else {
-                return n * factorial(n - 1);
-            }
+    function factorial(n) {
+        if (n === 0 || n === 1) {
+            return 1;
+        } else {
+            return n * factorial(n - 1);
         }
+    }
 
-        function calculateCombination() {
-            var n = parseInt(document.getElementById("combinationElementsCount").value);
-            var k = parseInt(document.getElementById("combinationSelectionCount").value);
-            
-            if (!isNaN(n) && !isNaN(k) && n >= k && n > 0 && k > 0) {
-                var result = factorial(n) / (factorial(k) * factorial(n - k));
-                document.getElementById("combinationResult").textContent = "Результат: " + result;
-            } else {
-                document.getElementById("combinationResult").textContent = "Пожалуйста, введите корректные значения для n и k (n >= k > 0).";
-            }
+    function calculateArrangement() {
+        var n = parseInt(document.getElementById("arrangementElementsCount").value);
+        var k = parseInt(document.getElementById("arrangementSelectionCount").value);
+        
+        if (!isNaN(n) && !isNaN(k) && n >= k && n > 0 && k > 0) {
+            var result = factorial(n) / factorial(n - k);
+            document.getElementById("arrangementResult").textContent = "Результат: " + result;
+        } else {
+            document.getElementById("arrangementResult").textContent = "Пожалуйста, введите корректные значения для n и k (n >= k > 0).";
         }
+    }
 
-        function factorial(n) {
-            if (n === 0 || n === 1) {
-                return 1;
-            } else {
-                return n * factorial(n - 1);
-            }
+    function factorial(n) {
+        if (n === 0 || n === 1) {
+            return 1;
+        } else {
+            return n * factorial(n - 1);
         }
+    }
 
-        function calculateRelativeFrequency() {
-            var k = parseInt(document.getElementById("eventOccurredCount").value);
-            var n = parseInt(document.getElementById("totalTrialsCount").value);
-            
-            if (!isNaN(k) && !isNaN(n) && k >= 0 && n > 0) {
-                var result = k / n;
-                document.getElementById("relativeFrequencyResult").textContent = "Результат: " + result.toFixed(2); 
-            } else {
-                document.getElementById("relativeFrequencyResult").textContent = "Пожалуйста, введите корректные значения для k и n (k >= 0, n > 0).";
-            }
+    function calculateCombination() {
+        var n = parseInt(document.getElementById("combinationElementsCount").value);
+        var k = parseInt(document.getElementById("combinationSelectionCount").value);
+        
+        if (!isNaN(n) && !isNaN(k) && n >= k && n > 0 && k > 0) {
+            var result = factorial(n) / (factorial(k) * factorial(n - k));
+            document.getElementById("combinationResult").textContent = "Результат: " + result;
+        } else {
+            document.getElementById("combinationResult").textContent = "Пожалуйста, введите корректные значения для n и k (n >= k > 0).";
         }
-    </script>
+    }
+
+    function factorial(n) {
+        if (n === 0 || n === 1) {
+            return 1;
+        } else {
+            return n * factorial(n - 1);
+        }
+    }
+
+    function calculateRelativeFrequency() {
+        var k = parseInt(document.getElementById("eventOccurredCount").value);
+        var n = parseInt(document.getElementById("totalTrialsCount").value);
+        
+        if (!isNaN(k) && !isNaN(n) && k >= 0 && n > 0) {
+            var result = k / n;
+            document.getElementById("relativeFrequencyResult").textContent = "Результат: " + result.toFixed(2); 
+        } else {
+            document.getElementById("relativeFrequencyResult").textContent = "Пожалуйста, введите корректные значения для k и n (k >= 0, n > 0).";
+        }
+    }
+</script>
+ 
+ 
 </body>
 </html>
