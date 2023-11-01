@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Математические</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion();
+  } );
+  </script>
+</head>
+<body>
+    <h1>Математические задачи</h1>
+<div id="accordion">
+  <h3>Квадратный трёхчлен</h3>
+  <div>
+    <p>
+        <p>Найдите корни квадратного трехчлена: (ax^2 + bx - c = 0).</p>
+        <p>Введите значение для (a):</p>
+        <input type="number" id="quadraticA" placeholder="a">
+        <p>Введите значение для (b):</p>
+        <input type="number" id="quadraticB" placeholder="b">
+        <p>Введите значение для (c):</p>
+        <input type="number" id="quadraticC" placeholder="c">
+        <button onclick="solveQuadratic()">Решить</button>
+        <p id="quadraticResult"></p>
+    </p>
+  </div>
+  <h3>Уравнение с одной переменной</h3>
+  <div>
+    <p>
+        <p>Решите уравнение: (ax^3 - bx = 0)</p>
+        <p>Введите значение для (a):</p>
+        <input type="number" id="cubicA" placeholder="a">
+        <p>Введите значение для (b):</p>
+        <input type="number" id="cubicB" placeholder="b">
+        <button onclick="solveCubicEquation()">Решить</button>
+        <p id="cubicResult"></p>
+    </p>
+  </div>
+  <h3>Уравнение с двумя переменными</h3>
+    <div>
+        <p>
+            <p>Решите уравнение: (ax^3 + bx^2 - cx = 0)</p>
+            <p>Введите значение для (a):</p>
+            <input type="number" id="variableA" placeholder="a">
+            <p>Введите значение для (b):</p>
+            <input type="number" id="variableB" placeholder="b">
+            <p>Введите значение для (c):</p>
+            <input type="number" id="variableC" placeholder="c">
+            <button onclick="solveCubicEquation()">Решить</button>
+            <p id="cubicEquationResult"></p>
+        </p>
+    </div>
+    <h3>Арифметическая прогрессия</h3>
+    <div>
+        <p>
+            <p>Решите систему уравнений:</p>
+            <p>
+                ax^2 - bx + c = 0
+            </p>
+            <p>
+                dx^2 - ex + f = 0
+            </p>
+            <p>Введите значения для (a), (b) и (c):</p>
+            <input type="number" id="eq1A" placeholder="a">
+            <input type="number" id="eq1B" placeholder="b">
+            <input type="number" id="eq1C" placeholder="c">
+            <p>Введите значения для (d), (e) и (f):</p>
+            <input type="number" id="eq2A" placeholder="d">
+            <input type="number" id="eq2B" placeholder="e">
+            <input type="number" id="eq2C" placeholder="f">
+            <button onclick="solveEquationSystem()">Решить</button>
+            <p id="systemResult"></p>
+        </p>
+    </div>
+    
+    <h3>Геометрическая прогрессия</h3>
+    <div>
+        <p>
+            <p>Найдите первый член геометрической прогрессии ((b_n)), если (b_6 = a) и (q = b)</p>
+            <p>Введите значение для (b_6) (a):</p>
+            <input type="number" id="geometricProgressionA" placeholder="a">
+            <p>Введите значение для (q) (b):</p>
+            <input type="number" id="geometricProgressionB" placeholder="b">
+            <button onclick="findFirstTerm()">Найти</button>
+            <p id="geometricProgressionResult"></p>
+        </p>
+    </div>
+
+    <h3>Комбинаторика</h3>
+    <div>
+        <p>
+            <p>Решите неравенство:</p>
+            <p>((2.5x + 3)(4x - 1) - 2.5x(4x + 2))
+            <select id="inequalityType">
+                <option value="<"> &lt; (меньше)</option>
+                <option value=">"> &gt; (больше)</option>
+                <option value="<="> &le; (меньше или равно)</option>
+                <option value=">="> &ge; (больше или равно)</option>
+            </select>
+            3</p>
+            <button onclick="solveInequality()">Решить</button>
+            <p id="inequalityResult"></p>
+        </p>
+    </div>
+    
+  <h3>Перестановка</h3>
+  <div>
+    <p>Сколькими способами (n) человека могут разместиться на (k)-местной скамейке?</p>
+    <p>Введите количество элементов (n):</p>
+    <input type="number" id="elementsCount" placeholder="n">
+    <p>Введите количество мест (k):</p>
+    <input type="number" id="seatsCount" placeholder="k">
+    <button onclick="calculatePermutation()">Рассчитать</button>
+    <p id="permutationResult"></p>
+  </div>
+  <h3>Размещение</h3>
+  <div>
+    <p>
+        <p>Сколькими способами может разместиться семья из (n) элементов в (k)-местном купе, если других пассажиров в купе нет?</p>
+        <p>Введите количество элементов (n):</p>
+        <input type="number" id="arrangementElementsCount" placeholder="n">
+        <p>Введите количество выбора (k):</p>
+        <input type="number" id="arrangementSelectionCount" placeholder="k">
+        <button onclick="calculateArrangement()">Рассчитать</button>
+        <p id="arrangementResult"></p>
+    </p>
+  </div>
+  <h3>Сочетание</h3>
+  <div>
+    <p>В магазине продаётся (n) различных элементов. Сколькими способами можно выбрать из них (k) элементов?</p>
+    <p>Введите количество элементов (n):</p>
+    <input type="number" id="combinationElementsCount" placeholder="n">
+    <p>Введите количество элементов (k):</p>
+    <input type="number" id="combinationSelectionCount" placeholder="k">
+    <button onclick="calculateCombination()">Рассчитать</button>
+    <p id="combinationResult"></p>
+ </div>
+ <h3>Относительная частота</h3>
+ <div>
+    <p>В 2006 г. в городе Дмитрове в июле и августе было (n) солнечных дней. Какова относительная частота солнечных дней в указанные (k) дней?</p>
+    <p>Введите число испытаний, в которых событие наступило (k):</p>
+    <input type="number" id="eventOccurredCount" placeholder="k">
+    <p>Введите общее число испытаний (n):</p>
+    <input type="number" id="totalTrialsCount" placeholder="n">
+    <button onclick="calculateRelativeFrequency()">Рассчитать</button>
+    <p id="relativeFrequencyResult"></p>
+ </div>
+</div>
+</body>
+  <script src="{{url_for('static', filename = 'js/script.js' )}}"></script>
+</html>
